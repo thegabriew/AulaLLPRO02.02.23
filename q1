@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+#define max 10
+
+void ordenar_idades(int idades[], int tamanho) {
+    int i, j, min_idx, temp;
+    for (i = 0; i < tamanho-1; i++) {
+        min_idx = i;
+        for (j = i+1; j < tamanho; j++) {
+            if (idades[j] < idades[min_idx]) {
+                min_idx = j;
+            }
+        }
+        temp = idades[min_idx];
+        idades[min_idx] = idades[i];
+        idades[i] = temp;
+    }
+}
+
+int main() {
+    int idades[max];
+    int i;
+    puts("Digite as idades das pessoas:\n");
+    for (i = 0; i < max; i++) {
+        scanf("%d", &idades[i]);
+    }
+    ordenar_idades(idades, max);
+    puts("As idades em ordem crescente ficam:\n");
+    for (i = 0; i < max; i++) {
+        printf("%d\n", idades[i]);
+    }
+    return 0;
+}
