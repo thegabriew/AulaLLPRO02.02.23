@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+#define NUM_PESSOAS 10
+
+void ordenar_idades(int idades[], int tamanho) {
+    int i, j, max_idx, temp;
+    for (i = 0; i < tamanho-1; i++) {
+        max_idx = i;
+        for (j = i+1; j < tamanho; j++) {
+            if (idades[j] > idades[max_idx]) {
+                max_idx = j;
+            }
+        }
+        temp = idades[max_idx];
+        idades[max_idx] = idades[i];
+        idades[i] = temp;
+    }
+}
+
+int main() {
+    int idades[NUM_PESSOAS];
+    int i;
+    puts("Digite as idades das pessoas:\n");
+    for (i = 0; i < NUM_PESSOAS; i++) {
+        scanf("%d", &idades[i]);
+    }
+    ordenar_idades(idades, NUM_PESSOAS);
+    puts("Idades em ordem decrescente:\n");
+    for (i = 0; i < NUM_PESSOAS; i++) {
+        printf("%d\n", idades[i]);
+    }
+    return 0;
+}
